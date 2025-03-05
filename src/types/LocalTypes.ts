@@ -1,4 +1,4 @@
-import { MediaItemWithOwner, User, UserWithNoPassword } from '../types/DBtypes';
+import { MediaItemWithOwner, User } from '../types/DBtypes';
 
 export type Credentials = Pick<User, 'username' | 'password'>;
 export type RegisterCredentials = Pick<User, 'username' | 'password' | 'email'>;
@@ -10,15 +10,22 @@ export type AuthContextType = {
   handleAutoLogin: () => void;
 };
 
+// UserWithNoPassword'a token alanını ekle
+export interface UserWithNoPassword {
+  user_id: number;
+  username: string;
+  email: string;
+  created_at: string;
+  level_name?: string;
+  token?: string; // Token'ı isteğe bağlı olarak ekliyoruz
+}
+
 export type NavigationType = {
-  // Tab navigator screens
   'All Media': undefined;
   'My Profile': undefined;
   Upload: undefined;
-
-  // Stack navigator screens
   Tabs: undefined;
-  Single: {item: MediaItemWithOwner};
+  Single: { item: MediaItemWithOwner };
   'My Files': undefined;
   'My media app - login': undefined;
 };
