@@ -1,10 +1,11 @@
+import {RouteProp} from '@react-navigation/native';
 import {MediaItemWithOwner} from 'hybrid-types/DBTypes';
 import {Image, ScrollView, StyleSheet, Text} from 'react-native';
 import {Video} from 'expo-av';
 import {Card, Icon, ListItem} from '@rneui/base';
+import {NavigationType} from '../types/LocalTypes'; // Added for typing
 
-// TODO: check route prop type
-const Single = ({route}: any) => {
+const Single = ({route}: {route: RouteProp<NavigationType, 'Single'>}) => {
   const item: MediaItemWithOwner = route.params.item;
 
   return (
